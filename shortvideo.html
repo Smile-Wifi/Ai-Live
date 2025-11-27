@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Short Video System | AI Live Malaysia</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  /* ===== same theme ===== */
+  body{margin:0;font-family:"Poppins",sans-serif;background:#002244;color:white}
+  header{background:linear-gradient(#ff000000,#001a33),url("head-bg.jpg");background-size:cover;background-position:center;height:30vh;width:100%}
+  .container{width:95%;max-width:1200px;margin:auto}
+  h2{color:#F7A600;text-align:center;margin-top:25px}
+  .footer{margin-top:40px;background:#003366;padding:15px 20px;text-align:center;font-size:14px}
+
+  /* ===== page specifics ===== */
+  .demo-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:25px;margin:20px auto}
+  .demo-box h3{margin-top:0;color:#1E90FF}
+  button{background:#F7A600;color:#002244;border:none;padding:10px 18px;border-radius:6px;font-weight:600;cursor:pointer;margin:6px 4px}
+  @media(max-width:600px){button{font-size:13px;padding:8px 12px}}
+  textarea{width:100%;max-width:100%;min-height:90px;background:rgba(255,255,255,.1);color:white;border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:8px}
+  .progress-bar{height:8px;background:rgba(255,255,255,.15);border-radius:4px;margin-top:10px;overflow:hidden}
+  .progress-bar div{height:100%;background:#1E90FF;width:0%;transition:width .3s}
+</style>
+</head>
+<body>
+
+<header></header>
+
+<h2><i class="fa-solid fa-video"></i> AI Short Video System</h2>
+
+<div class="container">
+  <div class="demo-box">
+    <h3>Script → Video</h3>
+    <textarea id="script" placeholder="Type your 30-second script here...">Discover the future of live selling with AI hosts!</textarea>
+    <br><button onclick="generateVideo()">Generate Video</button>
+    <div class="progress-bar"><div id="progress"></div></div>
+    <p id="msg" style="margin-top:10px;font-size:14px;color:#1E90FF"></p>
+  </div>
+
+  <div class="demo-box">
+    <h3>Style Picker</h3>
+    <button onclick="setStyle('casual')">Casual</button>
+    <button onclick="setStyle('formal')">Formal</button>
+    <button onclick="setStyle('trendy')">Trendy</button>
+    <p>Selected: <span id="style-picked" style="color:#1E90FF">casual</span></p>
+  </div>
+
+  <div class="demo-box">
+    <h3>Dummy Render Queue</h3>
+    <p>In queue: <span id="queue" style="color:#1E90FF">3</span></p>
+    <button onclick="addQueue()">Add Dummy Job</button>
+    <button onclick="clearQueue()">Clear</button>
+  </div>
+</div>
+
+<div class="footer">
+  <p>HOTLINE : +6011-10668591</p>
+  <p>www.ailivemalaysia.com</p>
+</div>
+
+<script>
+  let style='casual',queue=3;
+  function setStyle(s){style=s;document.getElementById('style-picked').textContent=s}
+  function generateVideo(){
+    const p=document.getElementById('progress');p.style.width='0%';
+    document.getElementById('msg').textContent='Rendering...';
+    let w=0,t=setInterval(()=>{
+      w+=10;p.style.width=w+'%';
+      if(w===100){clearInterval(t);document.getElementById('msg').textContent='Video ready (dummy)';}
+    },200);
+  }
+  function addQueue(){document.getElementById('queue').textContent=++queue}
+  function clearQueue(){queue=0;document.getElementById('queue').textContent=0}
+</script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Live Host Services</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #002244;
+    color: white;
+  }
+
+  header {
+    background: linear-gradient(#ff000000, #001a33), url("head-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 30vh;
+    width: 100%;
+  }
+
+  .container {
+    width: 95%;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .about-title {
+    text-align: center;
+    font-size: 28px;
+    color: #F7A600;
+    margin-top: 15px;
+  }
+
+  .about-text {
+    text-align: center;
+    margin: 10px auto;
+    line-height: 1.6;
+    font-size: 15px;
+    width: 90%;
+  }
+
+  .services-title {
+    text-align: center;
+    color: #F7A600;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    letter-spacing: 4px;
+    font-weight: 600;
+  }
+
+  .services-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .service-card {
+    background: rgba(255,255,255,0.05);
+    padding: 20px 10px;
+    border-radius: 14px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.12);
+    transition: .25s;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+    border-color: #F7A600;
+  }
+
+  .service-card i {
+    font-size: 42px;
+    margin-bottom: 10px;
+    color: #1E90FF;
+  }
+
+  .service-card h3 {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  @media(max-width: 700px) {
+    .services-box {
+      grid-template-columns: 1fr;
+    }
+    .service-card i { font-size: 36px; }
+  }
+
+  .footer {
+    margin-top: 40px;
+    background: #003366;
+    padding: 15px 20px;
+    text-align: center;
+  }
+
+  .footer p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+</style>
+</head>
+
+<body>
+
+<header></header>
+
+<h2 class="about-title">About Us</h2>
+<p class="about-text">
+  AI Live Host Services transforms live selling with AI avatars, automation,
+  instant Q&A, and multi-language product showcases for profitable sessions.
+</p>
+
+<h2 class="services-title">OUR SERVICES</h2>
+
+<div class="container">
+  <div class="services-box">
+
+    <a href="livehost.html" class="service-card">
+      <i class="fa-solid fa-headset"></i>
+      <h3>AI Live Host System</h3>
+    </a>
+
+    <a href="shortvideo.html" class="service-card">
+      <i class="fa-solid fa-video"></i>
+      <h3>AI Short Video System</h3>
+    </a>
+
+    <a href="broadcast.html" class="service-card">
+      <i class="fa-solid fa-tower-broadcast"></i>
+      <h3>AI Broadcast System</h3>
+    </a>
+
+  </div>
+</div>
+
+<div class="footer">
+  <p>HOTLINE : +6011-10668591</p>
+  <p>www.ailivemalaysia.com</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Live Host System | AI Live Malaysia</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  /* ===== re-use head.html palette ===== */
+  body{margin:0;font-family:"Poppins",sans-serif;background:#002244;color:white}
+  header{background:linear-gradient(#ff000000,#001a33),url("head-bg.jpg");background-size:cover;background-position:center;height:30vh;width:100%}
+  .container{width:95%;max-width:1200px;margin:auto}
+  h2{color:#F7A600;text-align:center;margin-top:25px}
+  .footer{margin-top:40px;background:#003366;padding:15px 20px;text-align:center;font-size:14px}
+
+  /* ===== page specifics ===== */
+  .demo-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:25px;margin:20px auto}
+  .demo-box h3{margin-top:0;color:#1E90FF}
+  button{background:#F7A600;color:#002244;border:none;padding:10px 18px;border-radius:6px;font-weight:600;cursor:pointer;margin:6px 4px}
+  button:disabled{opacity:.5;cursor:not-allowed}
+  .hidden{display:none}
+  @media(max-width:600px){button{font-size:13px;padding:8px 12px}}
+</style>
+</head>
+<body>
+
+<header></header>
+
+<h2><i class="fa-solid fa-headset"></i> AI Live Host System</h2>
+
+<div class="container">
+  <div class="demo-box">
+    <h3>Instant Language Switch</h3>
+    <p id="greet-txt">Welcome to our live show!</p>
+    <button onclick="switchLang('en')">English</button>
+    <button onclick="switchLang('cn')">中文</button>
+    <button onclick="switchLang('bm')">Bahasa</button>
+  </div>
+
+  <div class="demo-box">
+    <h3>Auto Q&A Bot</h3>
+    <p>Status: <span id="qa-status" style="color:#1E90FF">Idle</span></p>
+    <button id="qa-btn" onclick="toggleQA()">Start Bot</button>
+  </div>
+
+  <div class="demo-box">
+    <h3>Dummy Sales Counter</h3>
+    <p>Items sold: <span id="sold" style="color:#1E90FF">0</span></p>
+    <button onclick="addSale()">Simulate Sale</button>
+    <button onclick="resetSale()">Reset</button>
+  </div>
+</div>
+
+<div class="footer">
+  <p>HOTLINE : +6011-10668591</p>
+  <p>www.ailivemalaysia.com</p>
+</div>
+
+<script>
+  const greetings={en:"Welcome to our live show!",cn:"欢迎收看我们的直播节目！",bm:"Selamat datang ke rancangan langsung kami!"};
+  let qaRunning=false,qaInt=null;
+  function switchLang(l){document.getElementById('greet-txt').textContent=greetings[l]}
+  function toggleQA(){
+    qaRunning=!qaRunning;
+    const btn=document.getElementById('qa-btn');
+    const stat=document.getElementById('qa-status');
+    if(qaRunning){
+      stat.textContent='Answering...';btn.textContent='Stop Bot';
+      qaInt=setInterval(()=>stat.textContent='Answered '+Math.floor(Math.random()*100)+' questions',1500);
+    }else{
+      clearInterval(qaInt);stat.textContent='Idle';btn.textContent='Start Bot';
+    }
+  }
+  let sold=0;
+  function addSale(){document.getElementById('sold').textContent=++sold}
+  function resetSale(){sold=0;document.getElementById('sold').textContent=0}
+</script>
+</body>
+</html>

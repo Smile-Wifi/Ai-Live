@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Broadcast System | AI Live Malaysia</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  /* ===== same theme ===== */
+  body{margin:0;font-family:"Poppins",sans-serif;background:#002244;color:white}
+  header{background:linear-gradient(#ff000000,#001a33),url("head-bg.jpg");background-size:cover;background-position:center;height:30vh;width:100%}
+  .container{width:95%;max-width:1200px;margin:auto}
+  h2{color:#F7A600;text-align:center;margin-top:25px}
+  .footer{margin-top:40px;background:#003366;padding:15px 20px;text-align:center;font-size:14px}
+
+  /* ===== page specifics ===== */
+  .demo-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:25px;margin:20px auto}
+  .demo-box h3{margin-top:0;color:#1E90FF}
+  button{background:#F7A600;color:#002244;border:none;padding:10px 18px;border-radius:6px;font-weight:600;cursor:pointer;margin:6px 4px}
+  @media(max-width:600px){button{font-size:13px;padding:8px 12px}}
+  .onair{background:#e60000 !important}
+</style>
+</head>
+<body>
+
+<header></header>
+
+<h2><i class="fa-solid fa-tower-broadcast"></i> AI Broadcast System</h2>
+
+<div class="container">
+  <div class="demo-box">
+    <h3>Studio Mixer</h3>
+    <button id="mic-btn" onclick="toggleMic()">Mic OFF</button>
+    <button id="screen-btn" onclick="toggleScreen()">Share Screen OFF</button>
+    <button id="air-btn" onclick="toggleOnAir()">Go ON AIR</button>
+  </div>
+
+  <div class="demo-box">
+    <h3>Channel Health</h3>
+    <p>Bitrate (kbps): <span id="bitrate" style="color:#1E90FF">0</span></p>
+    <p>Viewers: <span id="viewers" style="color:#1E90FF">0</span></p>
+  </div>
+
+  <div class="demo-box">
+    <h3>Dummy Playlist</h3>
+    <p>Now playing: <span id="track" style="color:#1E90FF">Intro Music</span></p>
+    <button onclick="nextTrack()">Next Track</button>
+  </div>
+</div>
+
+<div class="footer">
+  <p>HOTLINE : +6011-10668591</p>
+  <p>www.ailivemalaysia.com</p>
+</div>
+
+<script>
+  let mic=false,screen=false,onair=false,bitrateInt=null,viewerInt=null;
+  const tracks=['Intro Music','Product A Ad','Host Talk','Product B Ad','Outro Music'];
+  let trackIdx=0;
+  function toggleMic(){
+    mic=!mic;document.getElementById('mic-btn').textContent='Mic '+(mic?'ON':'OFF');
+  }
+  function toggleScreen(){
+    screen=!screen;document.getElementById('screen-btn').textContent='Share Screen '+(screen?'ON':'OFF');
+  }
+  function toggleOnAir(){
+    onair=!onair;
+    const btn=document.getElementById('air-btn');
+    if(onair){
+      btn.textContent='Stop Broadcast';btn.classList.add('onair');
+      bitrateInt=setInterval(()=>document.getElementById('bitrate').textContent=3500+Math.floor(Math.random()*500),1000);
+      viewerInt=setInterval(()=>document.getElementById('viewers').textContent=Math.floor(Math.random()*500)+800,2000);
+    }else{
+      btn.textContent='Go ON AIR';btn.classList.remove('onair');
+      clearInterval(bitrateInt);clearInterval(viewerInt);
+      document.getElementById('bitrate').textContent='0';
+      document.getElementById('viewers').textContent='0';
+    }
+  }
+  function nextTrack(){
+    trackIdx=(trackIdx+1)%tracks.length;
+    document.getElementById('track').textContent=tracks[trackIdx];
+  }
+</script>
+</body>
+</html>
